@@ -1,6 +1,6 @@
 manifestVersion: 1
-id: nrz-cloudflared
-name: Cloudflared
+id: nrz-webserver
+name: zweers.ch
 category: Networking
 version: "2023.7.3"
 tagline: A tunneling daemon by Cloudflare that safely exposes your localhost into the web.

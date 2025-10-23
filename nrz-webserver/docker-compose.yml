@@ -1,0 +1,12 @@
+version: "3.7" 
+
+services:
+  webserver:
+    image: httpd:2.4
+    container_name: apache_webserver
+    restart: unless-stopped
+    ports:
+      - "12000:80"
+    volumes:
+      - ${APP_DATA_DIR}/web/html:/usr/local/apache2/htdocs/
+      - ${APP_DATA_DIR}/web/conf:/usr/local/apache2/conf
