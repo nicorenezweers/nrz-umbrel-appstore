@@ -20,7 +20,7 @@ developer: Nico Rene Zweers
 website: https://nrz.umbrel.local
 submitter: nrz
 submission: https://github.com/nicorenezweers/nrz-website
-repo: https://github.com/nicorenezweers/nrz-umbrel-appstore/tree/main/nrz-webserver
+repo: https://github.com/nicorenezweers/nrz-umbrel-appstore/tree/ce4903e9ec676e351782b6771e539ba9336f7605/nrz-webserver
 support: https://github.com/nicorenezweers/nrz-website/issues
 gallery:
   - https://i.imgur.com/2vGk7qY.png
