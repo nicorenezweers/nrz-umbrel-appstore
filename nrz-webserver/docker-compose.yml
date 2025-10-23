@@ -3,53 +3,14 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: nrz-website_openlitespeed_1
+      APP_HOST: nrz-website
       APP_PORT: 80
 
-  openlitespeed:
-    image: litespeedtech/openlitespeed:latest
-    user: "1000:1000"
-    init: true
-    container_name: openlitespeed
+  nrz-website:
+    image: php:8.2-apache
+    container_name: nrz-website
     ports:
       - "12000:80"
-      - "12001:443"
-      - "12002:7080"
     volumes:
-      - ${APP_DATA_DIR}/nrz-website/html:/var/www/vhosts/localhost/html
-      - ${APP_DATA_DIR}/nrz-website/config:/usr/local/lsws/conf
-      - ${APP_DATA_DIR}/nrz-website/logs:/usr/local/lsws/logs
-    environment:
-      - LITESPEED_ADMIN_USER=admin
-      - LITESPEED_ADMIN_PASS=admin123
+      - ${APP_DATA_DIR}/nrz-website/html:/var/www/html
     restart: unless-stopped
-
-  goaccess-nginx-v2:
-    image: openrc/goaccess-nginx:v2
-    user: "1000:1000"
-    init: true
-    container_name: goaccess-nginx-v2
-    volumes:
-      - ${APP_DATA_DIR}/nrz-website/logs/localhost.access.log:/access.log:ro
-      - ${APP_DATA_DIR}/nrz-website/html:/var/www/html:rw
-    ports:
-      - "32000:32000"
-    environment:
-      - LANG=${LANG}
-    command:
-      [
-        "goaccess",
-        "/access.log",
-        "--log-format",
-        "COMBINED",
-        "-o",
-        "/var/www/html/goaccess.html",
-        "--real-time-html",
-        "--port=32000",
-        "--addr=0.0.0.0"
-      ]
-    tty: true
-    stdin_open: true
-    restart: unless-stopped
-
-networks: {}
