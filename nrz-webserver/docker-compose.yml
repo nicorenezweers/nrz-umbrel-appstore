@@ -2,19 +2,9 @@ version: "3.7"
 
 services:
   app_proxy:
-    image: nginx:latest
-    container_name: app_proxy
-    depends_on:
-      - openlitespeed
-    ports:
-      - "8080:80"
     environment:
-      APP_HOST: openlitespeed
+      APP_HOST: nrz-website_openlitespeed_1
       APP_PORT: 80
-    volumes:
-      - ./proxy/conf:/etc/nginx/conf.d:ro
-    networks:
-      - webnet
 
   openlitespeed:
     image: litespeedtech/openlitespeed:latest
@@ -22,9 +12,9 @@ services:
     init: true
     container_name: openlitespeed
     ports:
-      - "12000:80"      # HTTP
-      - "12001:443"     # HTTPS
-      - "12002:7080"    # Admin
+      - "12000:80"
+      - "12001:443"
+      - "12002:7080"
     volumes:
       - ${APP_DATA_DIR}/nrz-website/html:/var/www/vhosts/localhost/html
       - ${APP_DATA_DIR}/nrz-website/config:/usr/local/lsws/conf
@@ -33,16 +23,12 @@ services:
       - LITESPEED_ADMIN_USER=admin
       - LITESPEED_ADMIN_PASS=admin123
     restart: unless-stopped
-    networks:
-      - webnet
 
   goaccess-nginx-v2:
     image: openrc/goaccess-nginx:v2
     user: "1000:1000"
     init: true
     container_name: goaccess-nginx-v2
-    depends_on:
-      - openlitespeed
     volumes:
       - ${APP_DATA_DIR}/nrz-website/logs/localhost.access.log:/access.log:ro
       - ${APP_DATA_DIR}/nrz-website/html:/var/www/html:rw
@@ -65,9 +51,5 @@ services:
     tty: true
     stdin_open: true
     restart: unless-stopped
-    networks:
-      - webnet
 
-networks:
-  webnet:
-    driver: bridge
+networks: {}
