@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>NRZ</title>
+    <style>
+      /* Animation für swipeable profile-bodies */
+      .swipe-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 480px;
+        overflow: hidden;
+      }
+      .swipe-body {
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        transition: transform 0.28s cubic-bezier(.36,1.29,.62,.97), opacity 0.18s;
+        background: white;
+      }
+      .swipe-body.hidden {
+        pointer-events: none;
+        opacity: 0;
+      }
+      .swipe-body.active {
+        opacity: 1;
+        z-index: 2;
+      }
+  
+      .role {
+        display: flex;
+        align-items: center;
+        margin: 4px 0;
+      }
+      .role-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 6px;
+        cursor: pointer;
+      }
+      .role-add {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background: #444; /* dunkler */
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 18px;
+        color: #fff;
+      }
+
+
+      
+    </style>
+  
+    
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card nitro-card">
+        <div class="card-header">
+          <div style="background: url('./assets/img/banner.gif')" class="banner-img"></div>
+        </div>
+        <div class="card-body">
+          <div class="profile-header">
+            <div class="profil-logo"><img src="./assets/img/logo_blue.png" /></div>
+            <div class="badges-container">
+              <a href="https://x.com/nicorenezweers" target="_blank" class="badge-item"><img src="./assets/img/badges/x.png" alt="X" /><div class="tooltip tooltip-up">X / Twitter</div></a>
+              <a href="https://www.youtube.com/@nicorenezweers" target="_blank" class="badge-item"><img src="./assets/img/badges/youtube.webp" alt="YouTube" /><div class="tooltip tooltip-up">YouTube</div></a>
+              <a href="https://www.instagram.com/nicorenezweers/" target="_blank" class="badge-item"><img src="./assets/img/badges/instagram.webp" alt="Instagram" /><div class="tooltip tooltip-up">Instagram</div></a>
+            </div>
+          </div>
+
+          <div class="swipe-wrapper" style="margin-top:20px;height:440px;"> 
+            <div class="profile-indicators">
+              <span class="indicator active" data-index="0"></span>
+              <span class="indicator" data-index="1"></span>
+              <span class="indicator" data-index="2"></span>
+              <span class="indicator" data-index="3"></span>
+              <span class="indicator" data-index="4"></span>
+            </div>
+          
+            
+            <div class="profile-body swipe-body active" data-profile="0">
+              <div class="username">𝐍𝐑𝐙</div>
+              <div class="sub-username">nicorenezweers</div>
+              <hr />
+              <div class="basic-infos">
+                <div class="category-title">About Me</div>
+                <p>Passionate about everything, especially IT, finance, and philosophy, and I love gambling.</p>
+              </div>
+              <div class="basic-infos">
+                <div class="category-title">Spawn Day</div>
+                <p>16.05.2005</p>
+              </div>
+              <div class="roles">
+                <div class="category-title">identity</div>
+                <div class="roles-list">
+                  <div class="role"><div class="role-color" style="background: #e0e0e0"></div><p>Swiss</p></div>
+                  <div class="role"><div class="role-color" style="background: #bbbbbb"></div><p>Dutch</p></div>
+                  <div class="role"><div class="role-color" style="background: #888888"></div><p>German</p></div>
+                  <div class="role"><div class="role-color" style="background: #444444"></div><p>Finance</p></div>
+                  <div class="role"><div class="role-color" style="background: #cccccc"></div><p>Linux</p></div>
+                  <div class="role"><div class="role-color" style="background: #222222"></div><p>Bitcoin</p></div>
+                  <div class="role role-add"><div class="role-add-text">+</div></div>
+                </div>
+              </div>
+              
+              <div class="message">
+                <input type="text" id="messageInput" placeholder="Message @𝐍𝐑𝐙" />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Profilseite 3: leer -->
+            <div class="profile-body swipe-body top-centered-text" data-profile="1">
+              ᴍᴜꜱɪᴄ
+              
+
+
+
+
+<!-- Minimaler MP3 Player: AutoPlay, Play/Pause, kompakte Buttons -->
+<style>
+  .sc-title-table {
+    width:100%;
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    margin-bottom:20px;
+    font-size:20px;
+    font-family:sans-serif;
+  }
+
+  .sc-disc {
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    background: url('assets/music/1.jpg') center/cover no-repeat;
+    margin:0 auto 30px;
+    transition: transform .3s linear;
+  }
+
+  .sc-disc.playing {
+    animation: spin 5s linear infinite;
+  }
+
+  @keyframes spin {
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+  }
+
+  .sc-controls {
+    display:flex;
+    justify-content:center;
+    gap:20px; /* enger zusammen */
+    margin-top:-10px; /* näher an Platte */
+  }
+
+  .sc-controls button {
+    background: #111; /* dunkel */
+    border:none;
+    color:#fff;
+    font-size:28px; /* kleiner */
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition: transform .1s, background .2s;
+    font-family: monospace;
+  }
+
+  .sc-controls button:active {
+    transform: scale(0.9);
+    background:#333;
+  }
+</style>
+
+<table class="sc-title-table">
+  <tr>
+    <td>DELLA BESTIA (Slowed)</td>
+  </tr>
+</table>
+
+<div class="sc-disc" id="scDisc"></div>
+
+<div class="sc-controls">
+  <button id="prev">&lt;</button>
+  <button id="play">||</button>
+  <button id="next">&gt;</button>
+</div>
+
+<audio id="audio" src="assets/music/1.mp3" autoplay></audio>
+
+<script>
+  const audio = document.getElementById('audio');
+  const disc = document.getElementById('scDisc');
+  const playBtn = document.getElementById('play');
+
+  function updatePlayButton(){
+    if(audio.paused){
+      playBtn.textContent = '▶';
+      disc.classList.remove('playing');
+    } else {
+      playBtn.textContent = '||';
+      disc.classList.add('playing');
+    }
+  }
+
+  // Mittlerer Button Play/Pause
+  playBtn.addEventListener('click', ()=>{
+    if(audio.paused){
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    updatePlayButton();
+  });
+
+  // Prev Button
+  document.getElementById('prev').addEventListener('click', ()=>{
+    audio.currentTime = 0;
+    if(audio.paused) audio.play();
+    updatePlayButton();
+  });
+
+  // Next Button
+  document.getElementById('next').addEventListener('click', ()=>{
+    audio.currentTime = audio.duration;
+    audio.pause();
+    updatePlayButton();
+  });
+
+  // Auto-update Play button state
+  audio.addEventListener('play', updatePlayButton);
+  audio.addEventListener('pause', updatePlayButton);
+
+  window.addEventListener('load', ()=>{
+    audio.play().catch(()=>{}); 
+    updatePlayButton();
+});
+
+</script>
+
+
+              
+            </div>
+
+
+
+
+
+
+            
+            <div class="profile-body swipe-body top-centered-text" data-profile="2" style="text-align:center; font-size:1.2rem;">
+  TRUSTED SOFTWARE
+  <div class="software-list" style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem; max-width:400px; margin-left:auto; margin-right:auto;">
+
+    <!-- Perplexity -->
+    <a href="https://www.perplexity.ai" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">PERPLEXITY</span>
+        <span style="font-size:0.7rem; color:#bbb;">AI Search Engine</span>
+      </div>
+    </a>
+
+    <!-- Anytype -->
+    <a href="https://anytype.io" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">ANYTYPE</span>
+        <span style="font-size:0.7rem; color:#bbb;">Productivity App</span>
+      </div>
+    </a>
+
+    <!-- Logseq -->
+    <a href="https://logseq.com" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">LOGSEQ</span>
+        <span style="font-size:0.7rem; color:#bbb;">Note-taking App</span>
+      </div>
+    </a>
+
+    <!-- Revolut -->
+    <a href="https://www.revolut.com" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">REVOLUT</span>
+        <span style="font-size:0.7rem; color:#bbb;">Banking App</span>
+      </div>
+    </a>
+
+    <!-- Proton -->
+    <a href="https://proton.me" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">PROTON</span>
+        <span style="font-size:0.7rem; color:#bbb;">Email Service</span>
+      </div>
+    </a>
+
+    <!-- Tangem -->
+    <a href="https://tangem.com" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">TANGEM</span>
+        <span style="font-size:0.7rem; color:#bbb;">Crypto Wallet</span>
+      </div>
+    </a>
+
+    <!-- Session -->
+    <a href="https://getsession.org" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">SESSION</span>
+        <span style="font-size:0.7rem; color:#bbb;">Messenger</span>
+      </div>
+    </a>
+
+    <!-- Cachyos -->
+    <a href="https://cachyos.org" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">Cachyos</span>
+        <span style="font-size:0.7rem; color:#bbb;">Operating System</span>
+      </div>
+    </a>
+
+    <!-- Cursor -->
+    <a href="https://cursor.com" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">CURSOR</span>
+        <span style="font-size:0.7rem; color:#bbb;">VS Code Alternative</span>
+      </div>
+    </a>
+
+     <!-- Apple -->
+     <a href="https://apple.com" style="text-decoration:none; color:inherit;">
+      <div class="software-item" style="
+          background:#333;
+          padding:0.5rem 0.8rem;
+          border-radius:8px;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          color:#fff;
+          font-family:Arial, sans-serif;
+          transition: transform 0.2s, box-shadow 0.2s;">
+        <span style="font-size:0.9rem; font-weight:600; text-transform:uppercase;">APPLE</span>
+        <span style="font-size:0.7rem; color:#bbb;">Tech Company</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- Hover Effekt -->
+<style>
+  .software-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+</style>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+
+
+
+            
+            
+            <style>
+              .top-centered-text {
+                display: flex;
+                justify-content: center; /* horizontal zentrieren */
+                align-items: flex-start; /* vertikal oben */
+                text-align: center;      /* Text zentriert bei mehreren Zeilen */
+                padding-top: 10px;       /* Abstand von oben */
+                color: white;            /* Textfarbe weiß */
+              }
+            </style>
+            
+            
+            
+            <div class="profile-body swipe-body top-centered-text" data-profile="3" style="text-align:center; padding:30px; font-family:sans-serif;">
+              <div id="message" style="font-size:20px; margin-bottom:20px;">Try to hit 10 Coins in a row!</div>
+              
+              <div id="coinsContainer" style="margin-bottom:20px;">
+                <!-- 10 Coin Slots -->
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+                <span class="coin" style="font-size:40px; margin:0 5px;">🪙</span>
+              </div>
+            
+              <button id="luckBtn" style="padding:15px 30px; font-size:20px; cursor:pointer; background:#888; color:white; border:none; border-radius:10px; transition: background 0.3s;">Hit the Coin 🍀</button>
+            
+              <div id="probability" style="margin-top:10px; font-size:14px; color:#555;">Probability: 0.0977%</div>
+            
+              <script>
+                const btn = document.getElementById('luckBtn');
+                const coins = document.querySelectorAll('.coin');
+                const probDiv = document.getElementById('probability');
+                let streak = 0;
+                const goal = 10;
+                let cooldown = false;
+            
+                // Probability calculation
+                const probability = Math.pow(0.5, goal) * 100;
+                probDiv.textContent = `Probability: ${probability.toFixed(4)}%`;
+            
+                function updateStreak(hit) {
+                  if (hit) {
+                    coins[streak].textContent = '🟢';
+                    streak++;
+                    btn.textContent = '🎉 Coin hit! 🍀';
+                    btn.style.background = 'green';
+                  } else {
+                    if (streak < goal) coins[streak].textContent = '🔴';
+                    streak = 0;
+                    coins.forEach(c => {
+                      if (c.textContent === '🟢' || c.textContent === '🔴') c.textContent = '🪙';
+                    });
+                    btn.textContent = '😢 Missed!';
+                    btn.style.background = 'red';
+                  }
+            
+                  cooldown = true;
+                  setTimeout(() => {
+                    btn.style.background = '#888';
+                    btn.textContent = 'Hit the Coin 🍀';
+                    cooldown = false;
+                  }, 700);
+            
+                  if (streak >= goal) {
+                    btn.textContent = '🏆 10 Coins hit in a row! 🎉';
+                    btn.style.background = 'green';
+                    btn.disabled = true;
+                    btn.style.cursor = 'default';
+                  }
+                }
+            
+                btn.addEventListener('click', () => {
+                  if (cooldown) return;
+                  const hit = Math.random() < 0.5;
+                  updateStreak(hit);
+                });
+              </script>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+          
+          
+            
+            <!-- Profilseite 3: leer -->
+            <div class="profile-body swipe-body top-centered-text" data-profile="4">
+              ᴅᴏɴᴀᴛɪᴏɴ
+              
+            </div>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <script src="./assets/js/swipe.js"></script>
+    <script src="./assets/js/rolls.js"></script>
+
+
+
+    <div id="overlayBackdrop"></div>
+    <div id="overlayMenu">
+      <h3>Discord beitreten</h3>
+      <a href="https://discord.gg/MvUZxdPXpw" target="_blank" class="discord-link">
+        <button id="btnDiscord">Discord beitreten</button>
+      </a>
+      <button id="btnCancel" class="cancel">Abbrechen</button>
+    </div>
+    
+    <style>
+      /* Overlay-Menü Styling – komplett dunkelgrau */
+      #overlayMenu {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #2c2c2c; /* sehr dunkelgrau */
+        color: #f0f0f0;
+        border-radius: 12px;
+        padding: 24px;
+        z-index: 9999;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+        min-width: 320px;
+        font-family: sans-serif;
+      }
+    
+      #overlayMenu h3 {
+        margin: 0 0 16px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+        text-align: center;
+      }
+    
+      /* Link ohne Unterstrich */
+      .discord-link {
+        text-decoration: none;
+        display: block;
+      }
+    
+      #overlayMenu button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 6px;
+        background: #4a4a4a; /* dunkelgrau */
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      #overlayMenu button:hover {
+        background: #5c5c5c; /* etwas heller beim Hover */
+      }
+    
+      #overlayMenu button.cancel {
+        background: rgba(200, 0, 0, 0.6); /* dunkelrot durchsichtig */
+        color: #fff;
+      }
+      #overlayMenu button.cancel:hover {
+        background: rgba(200, 0, 0, 0.8); /* intensiver beim Hover */
+      }
+    
+      #overlayBackdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85); /* dunkleres Overlay */
+        z-index: 9998;
+      }
+    </style>
+    
+    
+    
+
+    <script>
+      // ==========================
+      // Overlay-Menü
+      // ==========================
+      const messageInput = document.getElementById('messageInput');
+      const overlayMenu = document.getElementById('overlayMenu');
+      const overlayBackdrop = document.getElementById('overlayBackdrop');
+      const btnSend = document.getElementById('btnSend');
+      const btnEmail = document.getElementById('btnEmail');
+      const btnCancel = document.getElementById('btnCancel');
+
+      function openOverlay() {
+        overlayMenu.style.display = 'block';
+        overlayBackdrop.style.display = 'block';
+      }
+      function closeOverlay() {
+        overlayMenu.style.display = 'none';
+        overlayBackdrop.style.display = 'none';
+      }
+      messageInput.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openOverlay();
+      });
+      overlayBackdrop.addEventListener('click', closeOverlay);
+      btnCancel.addEventListener('click', closeOverlay);
+      btnSend.addEventListener('click', () => {
+        const message = messageInput.value;
+        if (message.trim()) {
+          alert('Nachricht gesendet: ' + message);
+          messageInput.value = '';
+          closeOverlay();
+        } else {
+          alert('Bitte eine Nachricht eingeben!');
+        }
+      });
+      btnEmail.addEventListener('click', () => {
+        const message = messageInput.value;
+        if (message.trim()) {
+          window.location.href = `mailto:contact@nicorenezweers.com?subject=Nachricht&body=${encodeURIComponent(message)}`;
+          messageInput.value = '';
+          closeOverlay();
+        } else {
+          alert('Bitte eine Nachricht eingeben!');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeOverlay();
+      });
+
+    </script>
+  </body>
+</html>
